@@ -47,7 +47,10 @@ const DISCOGS_API = 'https://api.discogs.com';
 
 const discogsFetch = <T>(endpoint: string): Promise<T> =>
   fetch(`${DISCOGS_API}${endpoint}`, {
-    headers: { Authorization: `Discogs token=${DISCOGS_TOKEN}` },
+    headers: {
+      Authorization: `Discogs token=${DISCOGS_TOKEN}`,
+      'user-agent': 'NuclearPlayer/1.0',
+    },
   }).then((r) => r.json());
 
 export const searchArtists = (
