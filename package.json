@@ -1,6 +1,6 @@
 {
   "name": "nuclear-plugin-discogs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Discogs metadata provider for Nuclear music player",
   "author": "nukeop",
   "license": "AGPL-3.0-only",
