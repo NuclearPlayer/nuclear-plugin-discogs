@@ -1,7 +1,7 @@
 import type {
   Album,
   AlbumRef,
-  Artist,
+  ArtistBio,
   ArtistRef,
 } from '@nuclearplayer/plugin-sdk';
 
@@ -36,7 +36,7 @@ export const mapDiscogsMasterToAlbumRef = (
 export const mapArtistDetails = (
   discogs: DiscogsArtist,
   lastfm: LastfmArtist,
-): Artist => ({
+): ArtistBio => ({
   name: discogs.name,
   bio: lastfm.artist.bio?.content,
   artwork: discogs.images?.[0]

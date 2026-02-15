@@ -1,7 +1,7 @@
 import type {
   Album,
   AlbumRef,
-  Artist,
+  ArtistBio,
   ArtistRef,
   MetadataProvider,
   NuclearPlugin,
@@ -27,7 +27,7 @@ const createProvider = (): MetadataProvider =>
     kind: 'metadata',
     name: 'Discogs',
     searchCapabilities: ['artists', 'albums'],
-    artistMetadataCapabilities: ['artistDetails', 'artistAlbums'],
+    artistMetadataCapabilities: ['artistBio', 'artistAlbums'],
     albumMetadataCapabilities: ['albumDetails'],
     searchArtists: async (
       params: Omit<SearchParams, 'types'>,
@@ -47,7 +47,7 @@ const createProvider = (): MetadataProvider =>
       );
       return data.results.map(mapDiscogsMasterToAlbumRef);
     },
-    fetchArtistDetails: async (id: string): Promise<Artist> => {
+    fetchArtistBio: async (id: string): Promise<ArtistBio> => {
       const discogsArtist = await discogs.getArtist(id);
       const lastfmArtist = await lastfm.getArtistInfo(discogsArtist.name);
       return mapArtistDetails(discogsArtist, lastfmArtist);
@@ -80,7 +80,9 @@ const plugin: NuclearPlugin = {
     api.Providers.register(createProvider());
   },
 
-  onDisable() {},
+  onDisable(api: NuclearPluginAPI) {
+    api.Providers.unregister(PROVIDER_ID);
+  },
 
   onUnload() {},
 };

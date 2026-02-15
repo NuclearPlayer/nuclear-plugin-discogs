@@ -33,7 +33,10 @@
     "README.md"
   ],
   "dependencies": {
-    "@nuclearplayer/plugin-sdk": "^0.0.14"
+    "@nuclearplayer/plugin-sdk": "^2.0.0"
   },
-  "packageManager": "pnpm@10.16.1"
+  "packageManager": "pnpm@10.16.1",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
 }
